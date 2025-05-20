@@ -165,7 +165,7 @@ public class AwesomeNotificationsPlugin
             Logger.d(TAG, "Awesome Notifications plugin detached from Android " + Build.VERSION.SDK_INT);
         SharedPreferences prefs = applicationContext.getSharedPreferences("FlutterSharedPreferences", Context.MODE_PRIVATE);
     SharedPreferences.Editor editor = prefs.edit();
-    editor.putBoolean("mqtt_connected", false);
+    editor.putBoolean("flutter.mqtt_connected", false);
     editor.apply();
                          Logger.d(TAG, "Awesome Notifications update " + Build.VERSION.SDK_INT);
         }
