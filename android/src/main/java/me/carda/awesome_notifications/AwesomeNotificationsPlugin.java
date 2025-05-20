@@ -40,7 +40,8 @@ import me.carda.awesome_notifications.core.utils.CalendarUtils;
 import me.carda.awesome_notifications.core.utils.ListUtils;
 import me.carda.awesome_notifications.core.utils.MapUtils;
 import me.carda.awesome_notifications.core.utils.StringUtils;
-
+import android.content.Context;
+import android.content.SharedPreferences;
 /**
  * AwesomeNotificationsPlugin
  **/
