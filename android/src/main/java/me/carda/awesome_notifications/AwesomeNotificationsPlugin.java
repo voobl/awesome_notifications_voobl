@@ -160,15 +160,33 @@ public class AwesomeNotificationsPlugin
             awesomeNotifications.dispose();
             awesomeNotifications = null;
         }
-
+   setMqttConnectedState(applicationContext,false);
         if (AwesomeNotifications.debug){
-            Logger.d(TAG, "Awesome Notifications plugin detached from Android " + Build.VERSION.SDK_INT);
-        SharedPreferences prefs = applicationContext.getSharedPreferences("FlutterSharedPreferences", Context.MODE_PRIVATE);
-    SharedPreferences.Editor editor = prefs.edit();
-    editor.putBoolean("flutter.mqtt_connected", false);
-    editor.apply();
+               
                          Logger.d(TAG, "Awesome Notifications update " + Build.VERSION.SDK_INT);
         }
+    }
+    public void setMqttConnectedState(Context context, boolean connected) {
+        // Get the SharedPreferences file used by Flutter
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                "FlutterSharedPreferences", // The file name used by the Flutter plugin
+                Context.MODE_PRIVATE);
+
+        // Get an editor to put values
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        // The key used by Flutter is prefixed with "flutter."
+        // Replace 'mqtt_connected' with the actual string value of your _keyMqttConnected variable
+        String mqtt_connected = "flutter.mqtt_connected"; // Example: If _keyMqttConnected was "mqtt_connected"
+         String mqtt_handling_fcm = "flutter.handling_fcm"; 
+        // Put the boolean value
+        editor.putBoolean(mqtt_connected, connected);
+        editor.putBoolean(mqtt_handling_fcm, connected);
+        // Apply the changes asynchronously
+        editor.apply();
+
+        // If you need to ensure the data is written immediately (less common for booleans), use .commit()
+        // editor.commit(); // This blocks the UI thread, generally prefer apply()
     }
 
     @Override
