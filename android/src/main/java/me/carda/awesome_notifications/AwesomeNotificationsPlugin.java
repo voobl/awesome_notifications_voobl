@@ -183,7 +183,7 @@ public class AwesomeNotificationsPlugin
         editor.putBoolean(mqtt_connected, connected);
         editor.putBoolean(mqtt_handling_fcm, connected);
         // Apply the changes asynchronously
-        editor.apply();
+      editor.commit();
 
         // If you need to ensure the data is written immediately (less common for booleans), use .commit()
         // editor.commit(); // This blocks the UI thread, generally prefer apply()
